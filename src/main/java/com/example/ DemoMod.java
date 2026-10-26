@@ -1,15 +1,12 @@
 package com.example;
 
 import net.fabricmc.api.ModInitializer;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class DemoMod implements ModInitializer {
-    public static final String MOD_ID = "demo";
-    public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+	public static final String MOD_ID = "testmod";
 
-    @Override
-    public void onInitialize() {
-        LOGGER.info("Demo mod loaded for 26.1.2!");
-    }
+	@Override
+	public void onInitialize() {
+		System.out.println("DemoMod loaded MC26.1.2!");
+	}
 }
