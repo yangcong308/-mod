@@ -1,38 +1,30 @@
 {
 	"schemaVersion": 1,
-	"id": "modid",
+	"id": "demo",
 	"version": "${version}",
-	"name": "Example Mod",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"name": "Demo Mod",
+	"description": "26.1.2 Fabric template",
 	"authors": [
-		"Me!"
+		"You"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://github.com/yangcong308/-mod"
 	},
-	"license": "CC0-1.0",
-	"icon": "assets/modid/icon.png",
+	"license": "MIT",
+	"icon": "assets/demo/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.example.ExampleMod"
-		],
-		"client": [
-			"com.example.client.ExampleModClient"
+			"com.example.DemoMod"
 		]
 	},
 	"mixins": [
-		"modid.mixins.json",
-		{
-			"config": "modid.client.mixins.json",
-			"environment": "client"
-		}
+		"demo.mixins.json"
 	],
 	"depends": {
-		"fabricloader": ">=0.20.1",
-		"minecraft": "~26.3",
-		"java": ">=25",
-		"fabric-api": "*"
+		"fabricloader": ">=0.16.4",
+		"minecraft": "~26.1.2",
+		"java": ">=21",
+		"fabric-api": ">=0.112.1+26.1.2"
 	}
 }
