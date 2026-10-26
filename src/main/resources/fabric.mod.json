@@ -1,30 +1,30 @@
 {
-	"schemaVersion": 1,
-	"id": "demo",
-	"version": "${version}",
-	"name": "Demo Mod",
-	"description": "26.1.2 Fabric template",
-	"authors": [
-		"You"
-	],
-	"contact": {
-		"sources": "https://github.com/yangcong308/-mod"
-	},
-	"license": "MIT",
-	"icon": "assets/demo/icon.png",
-	"environment": "*",
-	"entrypoints": {
-		"main": [
-			"com.example.DemoMod"
-		]
-	},
-	"mixins": [
-		"demo.mixins.json"
-	],
-	"depends": {
-		"fabricloader": ">=0.16.4",
-		"minecraft": "~26.1.2",
-		"java": ">=21",
-		"fabric-api": ">=0.112.1+26.1.2"
-	}
+  "schemaVersion": 1,
+  "id": "testmod",
+  "version": "${mod_version}",
+  "name": "Test Mod",
+  "description": "Fabric mod for Minecraft 26.1.2",
+  "authors": [
+    "yangcong308"
+  ],
+  "contact": {
+    "repo": "https://github.com/yangcong308/-mod"
+  },
+  "license": "MIT",
+  "icon": "assets/testmod/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.yangcong308.testmod.TestMod"
+    ]
+  },
+  "mixins": [
+    "testmod.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.4",
+    "minecraft": "~26.1.2",
+    "java": ">=21",
+    "fabric-api": ">=0.113.0"
+  }
 }
