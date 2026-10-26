@@ -1,10 +1,10 @@
 plugins {
     id 'java'
-    id 'net.fabricmc.fabric-loom' version '1.13'
+    id 'net.fabricmc.fabric-loom' version '1.7'
 }
 
-group = project.property("maven_group")
-version = project.property("mod_version")
+group = "${project.maven_group}"
+version = "${project.mod_version}"
 
 repositories {
     mavenCentral()
