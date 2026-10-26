@@ -12,7 +12,7 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
       - name: Build mod
-        run: ./gradlew build
+        run: ./gradlew build --refresh-dependencies
       - name: Upload Jar
         uses: actions/upload-artifact@v4
         with:
