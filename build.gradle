@@ -1,51 +1,25 @@
 plugins {
-    id "net.fabricmc.fabric-loom" version "1.17"
-    id "maven-publish"
+    id 'java'
+    id 'net.fabricmc.fabric-loom' version '1.8.+'
 }
 
-version "${mod_version}"
-group "${maven_group}"
+group = project.property("maven_group")
+version = project.property("mod_version")
 
 repositories {
-    maven { url "https://bmclapi2.bangbang93.com/maven" }
     mavenCentral()
 }
 
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    mappings loom.mojang()
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+    modImplementation "net.fabricmc.fabric-api:${project.fabric_api_version}"
 }
 
 loom {
-}
-
-tasks.processResources {
-    inputs.property "version", project.version
-    filesMatching("fabric.mod.json") {
-        expand "version": project.version
-    }
+    accessWidenerPath = file("src/main/resources/demo.accesswidener")
 }
 
 tasks.withType(JavaCompile).configureEach {
-    options.release = 25
-}
-
-java {
-    sourceCompatibility = JavaVersion.VERSION_25
-    targetCompatibility = JavaVersion.VERSION_25
-    withSourcesJar()
-}
-
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            artifactId = archives_base_name
-            from components.java
-        }
-    }
-    repositories {
-        mavenLocal()
-    }
+    options.release = 21
 }
