@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "testmod",
-  "version": "${mod_version}",
+  "version": "${version}",
   "name": "Test Mod",
   "description": "Fabric mod for Minecraft 26.1.2",
   "authors": ["yangcong308"],
