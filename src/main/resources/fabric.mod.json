@@ -4,23 +4,14 @@
   "version": "${mod_version}",
   "name": "Test Mod",
   "description": "Fabric mod for Minecraft 26.1.2",
-  "authors": [
-    "yangcong308"
-  ],
-  "contact": {
-    "repo": "https://github.com/yangcong308/-mod"
-  },
+  "authors": ["yangcong308"],
+  "contact": {"repo": "https://github.com/yangcong308/-mod"},
   "license": "MIT",
   "icon": "assets/testmod/icon.png",
   "environment": "*",
   "entrypoints": {
-    "main": [
-      "com.example.DemoMod"
-    ]
+    "main": ["com.example.DemoMod"]
   },
-  "mixins": [
-    "testmod.mixins.json"
-  ],
   "depends": {
     "fabricloader": ">=0.20.1",
     "minecraft": "~26.1.2",
