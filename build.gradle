@@ -1,8 +1,7 @@
 plugins {
     id 'java'
-    id 'net.fabricmc.fabric-loom' version '1.18.4'
+    id 'net.fabricmc.fabric‑loom' version '1.17.2' //降级，支持jdk21
 }
-
 group = "${maven_group}"
 version = "${mod_version}"
 
