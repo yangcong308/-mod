@@ -2,16 +2,16 @@ plugins {
     id 'java'
     id 'net.fabricmc.fabric-loom' version '1.18.4'
 }
-group = "${project.maven_group}"
-version = "${project.mod_version}"
+group = "${maven_group}"
+version = "${mod_version}"
 repositories {
     mavenCentral()
     maven { url "https://maven.fabricmc.net/" }
 }
 dependencies {
-    minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+    minecraft "com.mojang:minecraft:${minecraft_version}"
+    modImplementation "net.fabricmc:fabric-loader:${loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_api_version}"
 }
 loom {
 }
