@@ -4,17 +4,18 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.player.UseItemCallback;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroups;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.text.Text;
-import net.minecraft.util.Hand;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.TypedActionResult;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 
 public class DemoMod implements ModInitializer {
     public static final String MOD_ID = "testmod";
@@ -23,29 +24,30 @@ public class DemoMod implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        Registry.register(Registries.ITEM, Identifier.of(MOD_ID, "dandruff"), DANDRUFF);
+        Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(MOD_ID, "dandruff"), DANDRUFF);
 
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.INGREDIENTS).register(entries -> {
             entries.add(DANDRUFF);
         });
 
         UseItemCallback.EVENT.register((player, world, hand) -> {
-            if (world.isClient()) {
-                return TypedActionResult.pass(ItemStack.EMPTY);
+            if (world.isClientSide()) {
+                return InteractionResult.PASS;
             }
 
-            ItemStack heldStack = player.getStackInHand(hand);
-            if (heldStack.getItem() == Items.SHEARS && player.isSneaking()) {
+            ItemStack heldStack = player.getItemInHand(hand);
+            if (heldStack.getItem() == Items.SHEARS && player.isShiftKeyDown()) {
                 ItemStack dandruff = new ItemStack(DANDRUFF, 1);
-                player.getInventory().offerOrDrop(dandruff);
+                player.getInventory().placeItemBackInInventory(dandruff);
 
-                heldStack.damage(1, player, PlayerEntity.getSlotForHand(hand));
+                EquipmentSlot slot = hand == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND;
+                heldStack.hurtAndBreak(1, player, slot);
 
-                player.sendMessage(Text.literal("Got dandruff!"), false);
-                return TypedActionResult.success(heldStack);
+                player.sendSystemMessage(Component.literal("Got dandruff!"));
+                return InteractionResult.SUCCESS;
             }
 
-            return TypedActionResult.pass(heldStack);
+            return InteractionResult.PASS;
         });
     }
 }
