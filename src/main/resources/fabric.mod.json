@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "testmod",
-  "version": "${version}",
+  "version": "1.0.0",
   "name": "Test Mod",
   "description": "Fabric mod for Minecraft 26.1.2",
   "authors": ["yangcong308"],
@@ -18,3 +18,4 @@
     "java": ">=21",
     "fabric-api": ">=0.155.3"
   }
+}
