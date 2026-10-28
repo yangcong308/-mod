@@ -9,6 +9,7 @@ version = "${mod_version}"
 repositories {
     mavenCentral()
     maven { url "https://maven.fabricmc.net/" }
+    maven { url "https://maven.fabricmc.net/content/groups/public/" }
 }
 
 dependencies {
